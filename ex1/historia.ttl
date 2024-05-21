@@ -174,7 +174,8 @@
 :Ana rdf:type owl:NamedIndividual ,
               :Agricultor ;
      :filhoDe :Sr._João ,
-              :Sra._Maria .
+              :Sra._Maria ;
+     :nome "Ana" .
 
 
 ###  http://rpcw.di.uminho.pt/2024/historia#Banana
@@ -231,7 +232,8 @@
 :Pedro rdf:type owl:NamedIndividual ,
                 :Agricultor ;
        :filhoDe :Sr._João ,
-                :Sra._Maria .
+                :Sra._Maria ;
+       :nome "Pedro" .
 
 
 ###  http://rpcw.di.uminho.pt/2024/historia#Porco
@@ -242,7 +244,8 @@
 ###  http://rpcw.di.uminho.pt/2024/historia#Rex
 :Rex rdf:type owl:NamedIndividual ,
               :Cachorro ;
-     :protege :Fazenda_Sr_Joao .
+     :protege :Fazenda_Sr_Joao ;
+     :nome "Rex" .
 
 
 ###  http://rpcw.di.uminho.pt/2024/historia#Sr._Carlos
@@ -251,7 +254,8 @@
             :cultiva :Alface ,
                      :Cenoura ,
                      :Tomate ;
-            :possui :Fazenda_Sr_Carlos .
+            :possui :Fazenda_Sr_Carlos ;
+            :nome "Carlos" .
 
 
 ###  http://rpcw.di.uminho.pt/2024/historia#Sr._João
@@ -265,7 +269,8 @@
           :cultiva :Banana ,
                    :Laranja ,
                    :Maça ;
-          :possui :Fazenda_Sr_Joao .
+          :possui :Fazenda_Sr_Joao ;
+          :nome "João" .
 
 
 ###  http://rpcw.di.uminho.pt/2024/historia#Sra._Maria
@@ -274,7 +279,8 @@
             :colhe :Banana ,
                    :Laranja ,
                    :Maça ;
-            :produz :Geleia_Fruta .
+            :produz :Geleia_Fruta ;
+            :nome "Maria" .
 
 
 ###  http://rpcw.di.uminho.pt/2024/historia#Tomate
@@ -285,13 +291,15 @@
 ###  http://rpcw.di.uminho.pt/2024/historia#Trabalhador1
 :Trabalhador1 rdf:type owl:NamedIndividual ,
                        :Trabalhador ;
-              :colhe :Banana .
+              :colhe :Banana ;
+              :salário 500 .
 
 
 ###  http://rpcw.di.uminho.pt/2024/historia#Trabalhador2
 :Trabalhador2 rdf:type owl:NamedIndividual ,
                        :Trabalhador ;
-              :colhe :Laranja .
+              :colhe :Laranja ;
+              :salário 500 .
 
 
 ###  http://rpcw.di.uminho.pt/2024/historia#Trator_Sr_Joao
