@@ -1,0 +1,38 @@
+1. Quantas classes estão definidas na Ontologia?
+```
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+select (COUNT(DISTINCT ?s) as ?num_classes) where {
+    ?s rdf:type owl:Class .
+}
+```
+R: 13
+2. Quantas Object Properties estão definidas na Ontologia?
+```
+select (COUNT (DISTINCT ?p) as ?obj_prop) where {
+    ?s ?p ?o .
+}
+```
+R: 16
+
+3. Quantos indivíduos existem na tua ontologia?
+```
+
+```
+
+4. Quem planta tomates?
+```
+PREFIX : <http://rpcw.di.uminho.pt/2024/historia/>
+select * where {
+    ?s :cultiva :Tomate  .
+}
+```
+R: Sr. Carlos
+
+5. Quem contrata trabalhadores temporários?
+```
+PREFIX : <http://rpcw.di.uminho.pt/2024/historia/>
+select DISTINCT ?s where {
+    ?s :contrata ?tp  .
+}
+```
