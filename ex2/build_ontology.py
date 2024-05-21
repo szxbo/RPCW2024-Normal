@@ -253,21 +253,27 @@ def main():
     # open medical.ttl
     with open("medical.ttl", "r") as file:
         medical = file.read()
+    
+    out = medical + diseases_out + symptoms_out + descriptions
         
     # write the new file
     with open("med_doencas.ttl", "w") as file:
-        file.write(medical + diseases_out + symptoms_out + descriptions)
-    
-    
+        file.write(out)
+        print('File med_doencas.ttl created')
+        
+    out += treatments    
+        
     # write the new file (treatments.ttl)
     with open("med_tratamentos.ttl", "w") as file:
-        file.write(medical + diseases_out + symptoms_out + descriptions + treatments)
-    
-    total = medical + diseases_out + symptoms_out + descriptions + treatments + patients_out
+        file.write(out)
+        print('File med_tratamentos.ttl created')
+
+    out += patients_out
     
     # write the new file (patients.ttl)
     with open("med_doentes.ttl", "w") as file:
-        file.write(total)
+        file.write(out)
+        print('File med_doentes.ttl created')
 
 if __name__ == "__main__":
     main()
