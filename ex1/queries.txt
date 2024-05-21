@@ -17,7 +17,12 @@ R: 16
 
 3. Quantos indivíduos existem na tua ontologia?
 ```
-
+PREFIX owl: http://www.w3.org/2002/07/owl
+SELECT (COUNT(?i) as ?n_indiv)
+WHERE {
+    ?c a owl:Class.
+    ?i a ?c.
+}
 ```
 
 4. Quem planta tomates?
