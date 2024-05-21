@@ -245,9 +245,9 @@ def patients(file_path):
     return patients_out
 
 def main():
-    #diseases_out, symptoms_out = symptoms()
-    #descriptions = descr()
-    #treatments = treat()
+    diseases_out, symptoms_out = symptoms()
+    descriptions = descr()
+    treatments = treat()
     patients_out = patients("pg54194.json")
     
     # open medical.ttl
@@ -255,20 +255,19 @@ def main():
         medical = file.read()
         
     # write the new file
-    #with open("symptoms.ttl", "w") as file:
-    #    file.write(medical + diseases_out + symptoms_out)
+    with open("med_doencas.ttl", "w") as file:
+        file.write(medical + diseases_out + symptoms_out + descriptions)
     
-    # write the new file (descriptions.ttl)
-    #with open("descriptions.ttl", "w") as file:
-    #    file.write(medical + diseases_out + symptoms_out + descriptions)
     
     # write the new file (treatments.ttl)
-    #with open("treatments.ttl", "w") as file:
-    #    file.write(medical + treatments)
+    with open("med_tratamentos.ttl", "w") as file:
+        file.write(medical + diseases_out + symptoms_out + descriptions + treatments)
+    
+    total = medical + diseases_out + symptoms_out + descriptions + treatments + patients_out
     
     # write the new file (patients.ttl)
-    with open("patients.ttl", "w") as file:
-        file.write(medical + patients_out)
+    with open("med_doentes.ttl", "w") as file:
+        file.write(total)
 
 if __name__ == "__main__":
     main()
