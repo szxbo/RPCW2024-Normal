@@ -212,11 +212,43 @@ def treat():
         
     return treat_out
 
+import json
+
+def patients(file_path):
+    
+    json_reader = json.load(open(file_path, "r"))
+    patients_out = ""
+    
+    for i, patient in enumerate(json_reader):
+        name = patient["nome"]
+        symptoms = patient["sintomas"] # list of symptoms
+        
+        # create the patient instance
+        patients_out += f":p{i} a :Patient ;"
+        patients_out += f"    :name \"{name}\" ;"
+        if len(symptoms) > 0:
+            patients_out += f"    :exhibitsSymptom "
+            for symptom in symptoms[:-1]:
+                symptom_clean = symptom.strip()
+                symptom_clean = symptom_clean.replace(" ", "_")
+                symptom_clean = symptom_clean.replace("(", "")
+                symptom_clean = symptom_clean.replace(")", "")
+                patients_out += f":{symptom_clean}, "
+            # add the last symptom (without the comma)
+            symptom = symptoms[-1]
+            symptom_clean = symptom.strip()
+            symptom_clean = symptom_clean.replace(" ", "_")
+            symptom_clean = symptom_clean.replace("(", "")
+            symptom_clean = symptom_clean.replace(")", "")
+            patients_out += f":{symptom_clean} .\n"
+        
+    return patients_out
 
 def main():
     #diseases_out, symptoms_out = symptoms()
     #descriptions = descr()
-    treatments = treat()
+    #treatments = treat()
+    patients_out = patients("pg54194.json")
     
     # open medical.ttl
     with open("medical.ttl", "r") as file:
@@ -231,8 +263,12 @@ def main():
     #    file.write(medical + diseases_out + symptoms_out + descriptions)
     
     # write the new file (treatments.ttl)
-    with open("treatments.ttl", "w") as file:
-        file.write(medical + treatments)
+    #with open("treatments.ttl", "w") as file:
+    #    file.write(medical + treatments)
+    
+    # write the new file (patients.ttl)
+    with open("patients.ttl", "w") as file:
+        file.write(medical + patients_out)
 
 if __name__ == "__main__":
     main()
